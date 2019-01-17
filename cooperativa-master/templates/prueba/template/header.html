@@ -1,0 +1,15 @@
+<nav>
+    <div class="nav-wrapper blue">
+        <a href="#!" class="brand-logo">Cooperativas</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            {% if user.is_authenticated %}
+                <li><a href="/clientes/">Clientes</a></li>
+            {% else %}
+                <li><a href="/login/">Administrar</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+

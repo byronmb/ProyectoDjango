@@ -1,0 +1,66 @@
+{% extends "../index.html" %}
+
+{% block body %}
+
+
+<nav >
+        <div class="nav-wrapper z-depth-2 blue lighten-2" style="border-radius: 20px">
+        <a href="" class="brand-logo">Transacción</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="buttonBack" href="javascript:window.history.back();">Volver</a></li>
+        </ul>
+     </div>
+
+  </nav>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card z-depth-3">
+            <div id="printableArea" style="margin: 25px">
+                <br>
+                <div>INFORME DE TRANSACCION</div>
+                <div >
+                    <label>Fecha:  -</label>{{fecha}}
+                </div >
+                <div >
+                    <label>Numero de cuenta: -</label>{{cuenta}}
+                </div>
+                <div >
+                    <label>Tipo de Transaccion: -</label>{{tipo}}
+                </div>
+                <div >
+                    <label>Cantidad: $ </label>{{valor}}
+                </div>
+                <div >
+                    <label>Descripcion: -</label>{{descripcion}}
+                </div>
+            </div>
+
+
+            <div align="center">
+                <table align="center" style=" width: 20px">
+
+                    <tr>
+                        <td> <input type="button" class="waves-effect waves-light btn blue" onclick="printDiv('printableArea')" value="Imprimir" style="margin: 10px" align="center" /></td>
+                        <td><a href="buscarCuenta?txt_buscar={{item.numero}}" class="waves-effect waves-light btn red"> Cancelar</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+{% endblock %}
+{% block js %}
+{% endblock %}

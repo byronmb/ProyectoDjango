@@ -1,0 +1,97 @@
+{% extends "../index.html" %}
+
+{% block body %}
+  <nav >
+        <div class="nav-wrapper z-depth-2 blue lighten-2" style="border-radius: 20px">
+        <a href="" class="brand-logo">Clientes</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="button" href="nuevo">Nuevo</a></li>
+            <li><a class="buttonBack" href="/clientes/">Volver</a></li>
+        </ul>
+     </div>
+
+  </nav>
+    <table style="width: 30%">
+            <th ><input onchange="recibir()" id="txt_buscar" type="text" style="width: 200px; color: white; border: solid" placeholder="Ingrese numero de cedula" value=""></th>
+            <th ><a id="boton_buscar" style="background-color: #00b0ff; width: 50px; height: 50px; font-size: 25px" class="btn btn-success"><i style="font-size: 20px" class="fa fa-search"></i></a></th>
+        </table>
+        <script>
+            function recibir() {
+                var valor = document.getElementById("txt_buscar").value;
+                document.getElementById("boton_buscar").href = 'buscar?txt_buscar='+valor+'';
+            }
+        </script>
+
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card z-depth-3">
+            <div class="card-content">
+                <span class="card-title">{{mensaje}}</span>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Apellidos</th>
+                            <th>Nombres</th>
+                            <th>Genero</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in clientes %}
+                        <tr>
+
+                            <td><a href="verCuentas?cedula={{item.cedula}}">{{item.cedula}}</a></td>
+                            <td>{{item.apellidos}}</td>
+                            <td>{{item.nombres}}</td>
+
+                            {% if item.genero == 'm' %}
+                            <td>Masculino</td>
+                            {% else %}
+                            <td>Femenino</td>
+                            {% endif %}
+
+                            <td>{{item.correo}}</td>
+                            <td>{{item.telefono}}</td>
+                            <td>
+                                <a class="boton colorBoton formaBoton"href="editar?cedula={{item.cedula}}">EDITAR</a>
+                                <a class="botonRojo colorBotonRojo formaBoton" href="eliminar?cedula={{item.cedula}}">ELIMINAR</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-action">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    var eliminar = function(id){
+        $.ajax({
+            url: "eliminar",
+            method: "POST",
+            data: { id : id }
+        }).success(function( msj ) {
+            if(msj == "eliminado"){
+
+            }
+            if(msj == "no eliminado"){
+
+            }
+            if(msj == "perdido"){
+
+            }
+        });
+    }
+</script>
+{% endblock %}

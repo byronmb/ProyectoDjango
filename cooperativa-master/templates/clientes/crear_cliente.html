@@ -1,0 +1,70 @@
+{% extends "../index.html" %}
+
+{% block body %}
+
+<head>
+
+  <style type="text/css">
+
+label {
+
+  color: #1151E8    ;
+
+  font-size: 14px;
+}
+
+.errorlist
+    {
+        color: red;
+    }
+
+
+  </style>
+</head>
+    <nav >
+        <div class="nav-wrapper z-depth-2 blue lighten-2" style="border-radius: 20px">
+            <a href="" class="brand-logo">Crear</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="buttonBack" href="javascript:window.history.back();">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card z-depth-3">
+            <form method="POST" action="">
+                <table class="table">
+                <div class="card-content" style="" >
+                    <span class="card-title">{{mensaje}}</span>
+                    {{f.as_table}}
+                    <input id="Hola">
+                    {% csrf_token %}
+                </div>
+                </table >
+                <div class="card-action" onload="hola()">
+                    <button type="submit" class="btn btn-success"><i class="far fa-save"></i> GUARDAR</button>
+
+                    <a style="background-color: red" class="btn btn-danger" href="javascript:window.history.back();" ><i class="fas fa-ban"></i> Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+document.getElementById('id_fechaNacimiento').type= 'date'
+</script>
+{% endblock %}
+{% block js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
+
+    });
+    function hola() {
+        document.getElementsByName("apellidos").innerHTML = "xaasx";
+    }
+
+</script>
+{% endblock %}

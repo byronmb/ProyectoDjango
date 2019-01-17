@@ -1,0 +1,66 @@
+.boton {
+text-decoration: none;
+ color: #fff;
+ font-weight: bold;
+ padding: 12px 20px;
+ font-size: 11px;
+ border-radius: 10px;
+ background-color: #0D47A1;
+ box-shadow: 0 5px 5px #353661 , 0 9px 0 #353661 , 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(25,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+ position: relative;
+ border-bottom: 1px solid rgba(255,255,255,0.2);
+ display: inline-block;
+ font-family: Arial, Helvetica, sans;
+ text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
+}
+
+.boton:hover {
+ box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(255,255,0,0.4), inset 0px 2px 15px rgba(235,255,0,0.4), inset 0 -2px 9px rgba(235,235,0,0.4);
+ color: #fff !important;
+}
+
+.boton:active {
+ top: 7px;
+ box-shadow: 0 2px 0 #7F8EAF    , 0px 4px 4px rgba(0,220,0,0.4), inset 0px 2px 5px rgba(250,250,0,0.2);
+ color: #fff !important;
+}
+
+.formaBoton {
+ border-radius: 5px;
+ padding-left: 15px;
+ padding-right: 15px;
+}
+
+
+.botonRojo {
+text-decoration: none;
+ color: #fff;
+ font-weight: bold;
+ padding: 12px 20px;
+ font-size: 11px;
+ border-radius: 10px;
+ background-color: #E33526;
+ box-shadow: 0 5px 5px #88352E   , 0 9px 0 #88352E , 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(25,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+ position: relative;
+ border-bottom: 1px solid rgba(255,255,255,0.2);
+ display: inline-block;
+ font-family: Arial, Helvetica, sans;
+ text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
+}
+
+.botonRojo:hover {
+ box-shadow: 0 5px 5px #58231F, 0 9px 0 #58231F, 0px 9px 10px rgba(255,255,0,0.4), inset 0px 2px 15px rgba(25,255,0,0.4), inset 0 -2px 9px rgba(235,235,0,0.4);
+ color: #fff !important;
+}
+
+.botonRojo:active {
+ top: 7px;
+ box-shadow: 0 2px 0 #7F8EAF, 0px 4px 4px rgba(90,220,0,0.4), inset 0px 2px 5px rgba(250,250,0,0.2);
+ color: #fff !important;
+}
+
+.formaBotonRojo {
+ border-radius: 5px;
+ padding-left: 15px;
+ padding-right: 15px;
+}

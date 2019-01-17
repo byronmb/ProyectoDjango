@@ -1,0 +1,94 @@
+{% extends "../index.html" %}
+
+{% block body %}
+
+<nav >
+    <div class="nav-wrapper z-depth-2 blue lighten-2" style="border-radius: 20px">
+    <a href="" class="brand-logo">Cuentas</a>
+    <ul class="right hide-on-med-and-down">
+        {%if presentar%}
+        <li><a class="button" href="crearCuenta?cedula={{ cedula }}">Nueva Cuenta</a></li>
+        {%endif%}
+        <li><a class="buttonBack" href="javascript:window.history.back();">Volver</a></li
+    </ul>
+ </div>
+
+</nav>
+
+<table style="width: 30%">
+            <th ><input onchange="recibir()" id="txt_buscar" type="text" style="width: 200px;color: white; border: solid" placeholder="Ingrese numero de cedula" value=""></th>
+            <th ><a id="boton_buscar" style="background-color: #00b0ff; width: 50px; height: 50px; font-size: 25px" class="btn btn-success"><i style="font-size: 20px" class="fab fa-sistrix"></i></a></th>
+        </table>
+        <script>
+            function recibir() {
+                var valor = document.getElementById("txt_buscar").value;
+                document.getElementById("boton_buscar").href = 'buscarCuenta?txt_buscar='+valor+'';
+            }
+        </script>
+
+
+
+<div class="row">
+    <div class="col s12">
+        <div class="card z-depth-3">
+            <div class="card-content">
+                <span class="card-title">{{mensaje}}</span>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Numero de Cuenta</th>
+                            <th>Cédula</th>
+                            <th>Saldo</th>
+                            <th>Tipo de Cuenta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if clientes.exists%}
+                            {% for item in clientes %}
+                                <tr>
+                                    <td><a href="verTransaccion?numero={{item.numero}}">{{item.numero}}</a></td>
+                                    <td>{{item.cliente}}</td>
+                                    <td>{{item.saldo}}</td>
+                                    <td>{{item.tipoCuenta}}</td>
+                                    <td><a href="transaccion?numero={{item.numero}}"><i class="fas fa-money-bill-alt"></i> Transaccion</a></td>
+                                    <td><a href="buscarCuentaTransferencia?numero={{item.numero}}"><i class="fas fa-money-check-alt"></i> Transferencia</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                             <td>Sin cuentas</td>
+                            </tr>
+                        {% endif %}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-action">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+    var eliminar = function(id){
+        $.ajax({
+            url: "eliminar",
+            method: "POST",
+            data: { id : id }
+        }).success(function( msj ) {
+            if(msj == "eliminado"){
+
+            }
+            if(msj == "no eliminado"){
+
+            }
+            if(msj == "perdido"){
+
+            }
+        });
+    }
+</script>
+{% endblock %}
